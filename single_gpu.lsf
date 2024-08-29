@@ -6,6 +6,7 @@
 #BSUB -o %J.out                                       # output file
 #BSUB -e %J.err                                       # error file
 #BSUB -n 2                                            # 2 CPUs (number of cores in total)
+#BSUB -R "span[hosts=1]"                              # all cores in one host
 
 set -eo pipefail
 

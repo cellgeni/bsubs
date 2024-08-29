@@ -5,7 +5,8 @@
 #BSUB -R "select[mem>8G] rusage[mem=8G]"              # same as above
 #BSUB -o %I_%J.out                                    # output file
 #BSUB -e %I_%J.err                                    # error file
-#BSUB -n 4                                            # number of cores in total
+#BSUB -n 4                                            # 4 CPUs (number of cores per job)
+#BSUB -R "span[hosts=1]"                              # all cores in one host
 
 set -eo pipefail
 
