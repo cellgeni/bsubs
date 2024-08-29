@@ -1,11 +1,11 @@
 # Example LSF script submissions
 
 LSF (Load Sharing Facility) at Sanger Institute.
-
+LSF is the workload management platform, job scheduler, for distributed high performance computing owned by IBM used by the Sanger Institute. The software coordinates the execution of multiple jobs on the FARM. Its primary function is to efficiently allocate available resources to incoming jobs based on various scheduling policies.
 
 # How to submit?
 
-All scripts are written bash scripts with `#BSUB` notation. To submit them as jobs use the following command:
+All scripts are bash scripts with `#BSUB` notation. To submit them as jobs use the following command:
 
 ```
 bsub < myjob.lsf

@@ -1,0 +1,27 @@
+#!/bin/bash
+#BSUB -J [1-10]%5                                     # how many elements in the array (ie: 10) run 5 at the time
+#BSUB -q normal                                       # name of the queue
+#BSUB -M 8G                                           # 8G RAM memory
+#BSUB -R "select[mem>8G] rusage[mem=8G]"              # same as above
+#BSUB -o %I_%J.out                                    # output file
+#BSUB -e %I_%J.err                                    # error file
+#BSUB -n 4                                            # number of cores in total
+
+set -eo pipefail
+
+
+# Use the job index to do something, for example, get the Nth line of a file.
+# Assuming you've got the file `samples.tsv` that looks like this:
+# AAA       /path/to/sampleAAAA.cram
+# BBB       /path/to/sampleBBBB.cram
+# CCC       /path/to/sampleCCCC.cram
+
+# you can use the following line to pick up the Nth line of the file
+# for the given job index of this job:
+read -r SAMPLE CRAM < sed -n "${LSB_JOBINDEX}p" < samples.tsv
+
+
+echo "Unleashed a swarm of jobs. It's like herding cats, but with code. 🐱‍💻"
+echo "This job index is ${LSB_JOBINDEX}"
+echo "Sample ${SAMPLE}"
+echo "Path   ${CRAM}"
