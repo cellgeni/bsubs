@@ -1,6 +1,6 @@
 #!/bin/bash
 #BSUB -q gpu-normal                                   # name of the gpu queue
-#BSUB -gpu 'num=1:block=yes:gmem=6000'                # request 1 gpu with 6G of GRAM
+#BSUB -gpu 'num=1:gmem=6000'                          # request 1 gpu with 6G of GRAM
 #BSUB -M 4G                                           # 4G RAM memory
 #BSUB -R "select[mem>4G] rusage[mem=4G]"              # same as above
 #BSUB -o %J.out                                       # output file
